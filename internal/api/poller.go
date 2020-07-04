@@ -7,7 +7,6 @@ package api
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/google/uuid"
@@ -81,11 +80,11 @@ func (a *InterruptiblePoller) Run(ctx context.Context, ch <-chan struct{}, actio
 				canceled = true
 				logger.Debugf("poller was interrupted")
 			case <-timer.C:
-				logger.Debugf("poller is running action")
-				now := time.Now()
+				//logger.Debugf("poller is running action")
+				//now := time.Now()
 				action(cur)
-				logger.With("elapsed", fmt.Sprintf("%s", time.Since(now))).
-					Debugf("poller ran action")
+				//logger.With("elapsed", fmt.Sprintf("%s", time.Since(now))).
+					//Debugf("poller ran action")
 			}
 
 			if !canceled {

@@ -79,13 +79,13 @@ func syncTimeout(ctx context.Context, key store.Key, done chan bool) {
 }
 
 func waitForSync(ctx context.Context, key store.Key, dc *DynamicCache, informer informers.GenericInformer, done chan bool) {
-	now := time.Now()
-	logger := log.From(ctx).With("key", key)
-	msg := "informer cache has synced"
+	//now := time.Now()
+	//logger := log.From(ctx).With("key", key)
+	//msg := "informer cache has synced"
 	kcache.WaitForCacheSync(ctx.Done(), informer.Informer().HasSynced)
 	<-time.After(100 * time.Millisecond)
-	logger.With("elapsed", time.Since(now)).
-		Debugf(msg)
+	//logger.With("elapsed", time.Since(now)).
+	//	Debugf(msg)
 	dc.informerSynced.setSynced(key, true)
 	done <- true
 }

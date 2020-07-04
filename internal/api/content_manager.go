@@ -10,7 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"strings"
-	"time"
+	_"time"
 
 	oerrors "github.com/vmware-tanzu/octant/internal/errors"
 	"github.com/vmware-tanzu/octant/internal/event"
@@ -146,10 +146,10 @@ func (cm *ContentManager) generateContent(ctx context.Context, state octant.Stat
 	contentPath := state.GetContentPath()
 	logger := cm.logger.With("contentPath", contentPath)
 
-	now := time.Now()
-	defer func() {
-		logger.With("elapsed", time.Since(now)).Debugf("generating content")
-	}()
+	//now := time.Now()
+	//defer func() {
+	//	logger.With("elapsed", time.Since(now)).Debugf("generating content")
+	//}()
 
 	m, ok := cm.moduleManager.ModuleForContentPath(contentPath)
 	if !ok {
